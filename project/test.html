@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<input type="text" />
+<img src="http://10.80.7.192/putian/login/img.php" alt="" />
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+  $("input").on("blur",function(){
+    $.ajax({
+      type:"post",
+      url:"http://10.80.7.192/putian/login/canregister.php",
+      data:{
+        "code":$("input").val()
+      },
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      async:true,
+      success:function(data){
+        console.log(data);
+      }
+
+    });
+  })
+  var a=0;
+  $('img').on('click',function(){
+    a++;
+    $(this).attr("src",'http://10.80.7.192/putian/login/img.php?a='+a);
+    console.log($(this).attr("src"))
+  })
+</script>
+</html>
